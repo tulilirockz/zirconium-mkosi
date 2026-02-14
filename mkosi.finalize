@@ -2,10 +2,16 @@
 # SPDX-License-Identifier: LGPL-2.1-or-later
 set -xeuo pipefail
 
-# Capture the entirety of /etc in /usr/share/factory/etc so we can use
-# systemd-tmpfiles to symlink individual directories from it to /etc.
-mkdir -p "$BUILDROOT/usr/share/factory/"
-cp --archive --no-target-directory --update=none "$BUILDROOT/etc" "$BUILDROOT/usr/share/factory/etc"
-ln -sr "$BUILDROOT/usr" "$BUILDROOT/usr/share/factory/usr"
+# For DDIs
+# # Capture the entirety of /etc in /usr/share/factory/etc so we can use
+# # systemd-tmpfiles to symlink individual directories from it to /etc.
+# mkdir -p "$BUILDROOT/usr/share/factory/"
+# cp --archive --no-target-directory --update=none "$BUILDROOT/etc" "$BUILDROOT/usr/share/factory/etc"
+# ln -sr "$BUILDROOT/usr" "$BUILDROOT/usr/share/factory/usr"
 
+# For OCI
 rm -rf "$BUILDROOT/usr/etc" # ostree hates this :)
+RPM_MUT_DB="/usr/lib/sysimage/rpm"
+RPM_OSTREE_DB="/usr/share/rpm"
+install -d "$RPM_OSTREE_DB"
+rsync -av "$RPM_MUT_DB/" "$RPM_OSTREE_DB/" 1>&2 2>/dev/null
