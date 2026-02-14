@@ -1,4 +1,5 @@
 # SPDX-License-Identifier: LGPL-2.1-or-later
+cosign.key
 mkosi.local/
 mkosi.output/
 mkosi.cache/
