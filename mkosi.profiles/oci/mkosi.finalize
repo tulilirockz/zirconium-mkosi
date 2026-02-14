@@ -1,0 +1,4 @@
+#!/bin/bash
+set -xeuo pipefail
+
+rm -rf "$BUILDROOT/usr/etc" # ostree hates this :)

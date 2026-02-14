@@ -9,7 +9,7 @@ build:
 load:
     #!/usr/bin/env bash
     set -x
-    sudo podman load -i "$(find mkosi.output/* -maxdepth 0 -type d -printf "%T@ ,%p\n" -iname "_*" -print0 | sort -n | head -n1 | cut -d, -f2)" -q | cut -d: -f3 | xargs -I{} sudo podman tag {} {{image}}
+    sudo podman load -i "$(find mkosi.profiles/oci/mkosi.output/* -maxdepth 0 -type d -printf "%T@ ,%p\n" -iname "_*" -print0 | sort -n | head -n1 | cut -d, -f2)" -q | cut -d: -f3 | xargs -I{} sudo podman tag {} {{image}}
 
 ostree-rechunk:
     #!/usr/bin/env bash
@@ -39,8 +39,7 @@ disk-image $filesystem=filesystem:
     if [ ! -e "${BUILD_BASE_DIR:-.}/bootable.img" ] ; then
         fallocate -l 20G "${BUILD_BASE_DIR:-.}/bootable.img"
     fi
-    just bootc install to-disk --via-loopback /data/bootable.img --filesystem "${filesystem}" --wipe --disable-selinux
-
+    just bootc install to-disk --via-loopback /data/bootable.img --filesystem "${filesystem}" --wipe
 rechunk:
     #!/usr/bin/env bash
     IMG="{{ image }}"
