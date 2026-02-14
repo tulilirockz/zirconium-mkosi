@@ -40,9 +40,11 @@ jobs:
     steps:
       - name: Install dependencies for build
         run: |
+          set -x
           sudo dnf install -y mkosi distribution-gpg-keys podman git
           git clone https://github.com/systemd/mkosi.git
-          sudo mv mkosi/bin/mkosi /usr/bin/mkosi
+          sudo mv mkosi /usr/src/mkosi
+          sudo ln -sf "/usr/src/mkosi/bin/mkosi" /usr/bin/mkosi
 
       - name: Checkout
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
