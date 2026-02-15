@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+hyfetch --ascii-file=/usr/share/zirconium/zirconium.txt "${@}"

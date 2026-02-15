@@ -1,0 +1,6 @@
+[submodule "mkosi.profiles/zirconium/mkosi.extra/usr/share/zirconium/zdots"]
+	path = mkosi.profiles/zirconium/mkosi.extra/usr/share/zirconium/zdots
+	url = https://github.com/zirconium-dev/zdots.git
+[submodule "mkosi.profiles/zirconium/mkosi.extra/usr/share/zirconium/assets"]
+	path = mkosi.profiles/zirconium/mkosi.extra/usr/share/zirconium/assets
+	url = https://github.com/zirconium-dev/assets.git
