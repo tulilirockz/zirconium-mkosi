@@ -10,3 +10,6 @@ if [[ -d /etc/pam.d ]]; then
     rmdir /etc/pam.d
 fi
 
+# For podman rootless
+chmod 4755 /usr/bin/newuidmap
+chmod 4755 /usr/bin/newgidmap
