@@ -17,7 +17,6 @@ ostree-rechunk:
           --privileged \
           -t \
           -v /var/lib/containers:/var/lib/containers \
-          -v /home/tulip/tmp:/var/tmp:Z \
           "quay.io/centos-bootc/centos-bootc:stream10" \
           /usr/libexec/bootc-base-imagectl rechunk \
           "{{image}}" \
