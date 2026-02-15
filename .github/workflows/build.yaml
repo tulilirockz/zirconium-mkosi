@@ -75,6 +75,12 @@ jobs:
           BUILD_FLAVOR: ${{ matrix.flavor }}
         run: |
           sudo $(which just) build
+
+      - name: Load image
+        id: load
+        env:
+          BUILD_FLAVOR: ${{ matrix.flavor }}
+        run: |
           sudo $(which just) load
 
       - name: Rechunk image
