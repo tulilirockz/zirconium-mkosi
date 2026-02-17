@@ -11,7 +11,8 @@ if [[ -d /etc/pam.d ]]; then
 fi
 
 # For podman rootless
-chmod 4755 /usr/bin/newuidmap /usr/bin/newgidmap
-
+chmod 0755 /usr/bin/newuidmap /usr/bin/newgidmap
 setcap cap_setuid+ep /usr/bin/newuidmap
 setcap cap_setgid+ep /usr/bin/newgidmap
+chmod -s /usr/bin/newuidmap
+chmod -s /usr/bin/newgidmap
